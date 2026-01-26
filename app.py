@@ -64,7 +64,15 @@ def main():
         st.pyplot(fig_components)
 
         #see your data
-        st.dataframe(tickerDf)
+        #st.dataframe(tickerDf)
+
+        # Suponiendo que tickerdf es un DataFrame con la columna "Close"
+        minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date'].dt.year)['Close'].idxmin()]
+
+        # Si deseas obtener solo las fechas del mínimo anual
+        minimo_anual_fecha = minimo_anual['Date']
+
+        st.dataframe(minimo_anual)
 
 
 if __name__ == '__main__':
