@@ -64,6 +64,7 @@ def main():
         st.pyplot(fig_components)
 
         #see your data
+        print(tickerDf.columns)
         st.dataframe(tickerDf)
 
         # Suponiendo que tickerdf es un DataFrame con la columna "Close"
