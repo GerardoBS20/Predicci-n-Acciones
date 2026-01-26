@@ -68,10 +68,10 @@ def main():
         st.dataframe(tickerDf)
 
         # Suponiendo que tickerdf es un DataFrame con la columna "Close"
-        minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date'].dt.year)['Close'].idxmin()]
+        minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date '].dt.year)['Close'].idxmin()]
 
         # Si deseas obtener solo las fechas del mínimo anual
-        minimo_anual_fecha = minimo_anual['Date']
+        minimo_anual_fecha = minimo_anual['Date ']
 
         st.dataframe(minimo_anual)
 
