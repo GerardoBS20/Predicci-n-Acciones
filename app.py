@@ -67,11 +67,21 @@ def main():
         print(tickerDf.columns)
         st.dataframe(tickerDf)
 
+        st.dataframe(tickerDf.columns)
+
+        # Verifica si la columna existe
+        if 'Date' in tickerDf.columns:
+            # Utiliza el nombre correcto de la columna
+            minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date'].dt.year)['Close'].idxmin()]
+        else:
+            # Si la columna no existe, utiliza el nombre correcto
+            minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Fecha'].dt.year)['Close'].idxmin()]
+
         # Suponiendo que tickerdf es un DataFrame con la columna "Close"
-        minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date '].dt.year)['Close'].idxmin()]
+        minimo_anual = tickerDf.loc[tickerDf.groupby(tickerDf['Date'].dt.year)['Close'].idxmin()]
 
         # Si deseas obtener solo las fechas del mínimo anual
-        minimo_anual_fecha = minimo_anual['Date ']
+        minimo_anual_fecha = minimo_anual['Date']
 
         st.dataframe(minimo_anual)
 
