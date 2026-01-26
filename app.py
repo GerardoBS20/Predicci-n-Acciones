@@ -45,10 +45,10 @@ def main():
         m = Prophet(changepoint_prior_scale=changepoint_prior_scale,
                     changepoint_range=changepoint_range)
 
-        m.add_country_holidays(country_name='ES')
+        m.add_country_holidays(country_name='US')
 
         m.fit(df)  # df is a pandas.DataFrame with 'y' and 'ds' columns
-        future = m.make_future_dataframe(periods=180)
+        future = m.make_future_dataframe(periods=90)
         predictions = m.predict(future)
         predictions = predictions[predictions['ds'].dt.dayofweek < 5]
         df_pred = predictions[['ds','trend','yhat','yhat_lower','yhat_upper']]
