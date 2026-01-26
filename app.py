@@ -67,7 +67,7 @@ def main():
         print(tickerDf.columns)
         st.dataframe(tickerDf)
 
-        st.dataframe(tickerDf.columns)
+        #st.dataframe(tickerDf.columns)
 
         # Verifica si la columna existe
 
