@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import streamlit as st
 from prophet import Prophet
+from datetime import date
 
 def main():
     st.sidebar.title("Predicción de Acciones")
@@ -24,6 +25,19 @@ def main():
     #company_ticker = df_list.loc[df_list['Company Name'] == company_name].Ticker.reset_index(drop=True)[0]
     st.write(company_ticker)
 
+    fecha_usuario = st.date_input(
+    label="Selecciona una fecha",
+    value=date.today(),        # valor por defecto
+    format="YYYY-MM-DD"         # formato visible
+    )
+
+    # 2. Convertir a string en formato YYYY-MM-DD
+    fecha_usuario_str = fecha_usuario.strftime("%Y-%m-%d")
+
+    # 3. Fecha actual
+    fecha_actual = date.today()
+    fecha_actual_str = fecha_actual.strftime("%Y-%m-%d")
+
     if st.sidebar.button("Predict", key="predict"):
         #define the ticker symbol
         tickerSymbol = company_ticker
@@ -34,7 +48,7 @@ def main():
         tickerData = yf.Ticker(tickerSymbol)
 
         #get the historical prices for this ticker
-        tickerDf = tickerData.history(start='2021-1-1', end='2026-01-23')
+        tickerDf = tickerData.history(start='2021-1-1', end='2026-02-02')
 
         df = tickerDf['Close']
 
