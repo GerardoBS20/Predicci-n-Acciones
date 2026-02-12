@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 from prophet import Prophet
 from datetime import date
-@st.cache_data(ttl=3600) 
+#@st.cache_data(ttl=3600) 
 def main():
     st.sidebar.title("Predicción de Acciones")
 
