@@ -48,7 +48,7 @@ def main():
         tickerData = yf.Ticker(tickerSymbol)
 
         #get the historical prices for this ticker
-        tickerDf = tickerData.history(start='2021-1-1', end='2026-02-02')
+        tickerDf = tickerData.history(start=fecha_usuario_str, end=fecha_actual_str)
 
         df = tickerDf['Close']
 
